@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Desculpa, meu amor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: url('https://source.unsplash.com/1600x900/?love') no-repeat center center/cover;
+      font-family: 'Great Vibes', cursive;
+      color: white;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backdrop-filter: brightness(60%);
+      overflow-x: hidden;
+      position: relative;
+    }
+    h1 {
+      font-size: 4em;
+      z-index: 10;
+      position: relative;
+    }
+    p {
+      font-size: 2em;
+      z-index: 10;
+      position: relative;
+    }
+    button {
+      font-size: 1.5em;
+      padding: 10px 30px;
+      background-color: #ff6b81;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+      position: relative;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .foto {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      margin: 20px auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      z-index: 10;
+      position: relative;
+    }
+    /* Estilo dos corações */
+    .coracao {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      color: #ff4d6d;
+      animation-name: cair;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      pointer-events: none;
+      user-select: none;
+      z-index: 5;
+    }
+    @keyframes cair {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Desculpa, meu amor</h1>
+  <p>Eu errei, e estou aqui de coração aberto para pedir perdão.</p>
+
+  <img src="minha-foto.jpg" alt="nós dois" class="foto" />
+
+  <button onclick="window.location.href='surpresa.html'">Clique aqui</button>
+
+  <script>
+    function criarCoracao() {
+      const coracao = document.createElement('div');
+      coracao.classList.add('coracao');
+      coracao.style.left = Math.random() * 100 + 'vw'; // posição horizontal aleatória
+      coracao.style.fontSize = (10 + Math.random() * 30) + 'px'; // tamanho aleatório
+      coracao.style.animationDuration = (3 + Math.random() * 5) + 's'; // duração da queda aleatória
+      coracao.innerText = '❤️';
+      document.body.appendChild(coracao);
+
+      // Remove o coração após a animação terminar para não acumular elementos
+      setTimeout(() => {
+        coracao.remove();
+      }, 8000);
+    }
+
+    // Cria um coração a cada 400ms
+    setInterval(criarCoracao, 400);
+  </script>
+</body>
+</html>
